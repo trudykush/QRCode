@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "635890155276",
+    "firebase_url": "https://qrcode-29aa2.firebaseio.com",
+    "project_id": "qrcode-29aa2",
+    "storage_bucket": "qrcode-29aa2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:635890155276:android:d54f7dea0b13ea8bc35329",
+        "android_client_info": {
+          "package_name": "com.campionpumps.webservices.qrcode"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "635890155276-k71bchacsovh9pgsbabpgcf3e7jj1si3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTvNkYTzGINUqJvK5nvmIUucjNyE1yrw4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "635890155276-k71bchacsovh9pgsbabpgcf3e7jj1si3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

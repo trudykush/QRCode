@@ -144,7 +144,7 @@ public class QrGenerate extends AppCompatActivity {
             display.getSize(point);
             int width = point.x;
             int height = point.y;
-            int smallestDimension = width < height ? width : height;
+            int smallestDimension = Math.min(width, height);
 
             EditText qrInput = (EditText) findViewById(R.id.qrInput);
             String qrCodeData = qrInput.getText().toString();

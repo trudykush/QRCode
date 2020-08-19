@@ -13,6 +13,7 @@ import com.campionpumps.webservices.qrcode.ble.BluetoothLE
 import com.campionpumps.webservices.qrcode.qr.QrGenerate
 import com.campionpumps.webservices.qrcode.qr.QrRead
 import com.google.android.gms.tasks.Task
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.QuerySnapshot
 import com.google.firebase.messaging.FirebaseMessaging
@@ -41,7 +42,8 @@ class MainActivity : AppCompatActivity() {
         LikeView likeView = (LikeView) findViewById(R.id.like_view);
         likeView.setObjectIdAndType(
                 "https://www.facebook.com/FacebookDevelopers",
-                LikeView.ObjectType.PAGE);*/sendPushNotification()
+                LikeView.ObjectType.PAGE);*/
+        sendPushNotification()
     }
 
     private fun sendPushNotification() {
@@ -53,7 +55,7 @@ class MainActivity : AppCompatActivity() {
                 .build())
     }
 
-    fun readQr(view: View?) {
+    fun readQr() {
         val db = FirebaseFirestore.getInstance()
         db.collection("UserDetails")
                 .get()
@@ -70,7 +72,7 @@ class MainActivity : AppCompatActivity() {
         startActivity(intent)
     }
 
-    fun generateQr(view: View?) {
+    fun generateQr() {
         val intent = Intent(this@MainActivity, QrGenerate::class.java)
         startActivity(intent)
     }
@@ -107,7 +109,11 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = context.getSharedPreferences("LoginDetails", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
         editor.putBoolean("isLogged", false)
-        editor.commit()
+        editor.apply()
+
+        val firebaseAuth: FirebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth.signOut()
+
         startActivity(goToLoginPage)
     }
 
@@ -115,14 +121,14 @@ class MainActivity : AppCompatActivity() {
         exitApplication() //To exit application with back button press
     }
 
-    fun exitApplication() {
+    private fun exitApplication() {
         val exitIntent = Intent(Intent.ACTION_MAIN)
         exitIntent.addCategory(Intent.CATEGORY_HOME)
         exitIntent.flags = Intent.FLAG_ACTIVITY_NEW_TASK
         startActivity(exitIntent)
     }
 
-    var mClient = OkHttpClient()
+    private var mClient = OkHttpClient()
 
     //add your user refresh tokens who are logged in with firebase.
     var refreshedToken = ""
